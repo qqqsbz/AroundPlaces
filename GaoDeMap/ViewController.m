@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import "AroundPlacesViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import <AMapSearchKit/AMapSearchAPI.h>
 @interface ViewController ()<CLLocationManagerDelegate>
 {
     CLLocationManager *locationManager;
@@ -48,9 +49,9 @@
 
 - (void)selectPlace:(NSNotification *)notification
 {
-    NSString *name = notification.userInfo[@"name"];
-    if (name) {
-        [self.aroundPlaceBtn setTitle:notification.userInfo[@"name"] forState:UIControlStateNormal];
+    AMapPOI *mapPoi = notification.userInfo[@"data"];
+    if (mapPoi) {
+        [self.aroundPlaceBtn setTitle:mapPoi.name forState:UIControlStateNormal];
     }
     self.indexPath = notification.userInfo[@"indexPath"];
 }

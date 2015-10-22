@@ -192,10 +192,10 @@ static const CGFloat threshold = -70;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AMapPOI *mapPoi = datas[indexPath.row];
-    NSString *name  = (mapPoi.name && mapPoi.city) ? [NSString stringWithFormat:@"%@~%@",mapPoi.city,mapPoi.name] : mapPoi.name;
+    //NSString *name  = (mapPoi.name && mapPoi.city) ? [NSString stringWithFormat:@"%@~%@",mapPoi.city,mapPoi.name] : mapPoi.name;
     AMapGeoPoint *location  = mapPoi.location ? mapPoi.location : [AMapGeoPoint locationWithLatitude:0 longitude:0];
     
-    NSDictionary *userInfo = @{@"name":name,
+    NSDictionary *userInfo = @{@"data":mapPoi,
                                @"location":location,
                                @"indexPath":indexPath
                                };
